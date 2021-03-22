@@ -3,6 +3,14 @@
 while IFS= read -r -d '' -u 9
 do
     entropcalc $REPLY >> ./entropies
+    val=$(tail -n 1 entropies)
+    #FIND HIGH ENTROPIES
+    #Piping through the basic calculator command bc returns either 1 or 0.
+	#The option -l is equivalent to --mathlib; it loads the standard math library.
+    #Enclosing the whole expression between double parenthesis (( )) will translate these values to respectively true or false.
+	if (( $(echo "$val > 6.5" |bc -l) )) ; then
+	    echo "$REPLY" >> high_entropy_files.txt
+	fi
 done 9< <( find . -type f -print0 )
 
 #sort ./entropies > ./entropies_sort
@@ -10,3 +18,7 @@ done 9< <( find . -type f -print0 )
 #don't need to sort
 
 entroplot entropies
+
+echo "Output files: "
+echo "- entropies: list of all calculated entropies"
+echo "- high_entropy_files.txt: list of files with entropy higher than 6.5"
