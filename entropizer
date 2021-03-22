@@ -31,7 +31,7 @@ echo -e "\n\n\n"
 echo "End of entropy calculations. Drawing plot..."
 echo
 
-#entroplot entropies
+entroplot entropies
 
 echo
 echo "Plot drawn."
