@@ -11,8 +11,11 @@ if len(sys.argv) != 2:
 f = open(sys.argv[1], "rb") 
 byteArr = map(ord, f.read()) 
 f.close() 
-fileSize = len(byteArr) 
+fileSize = len(byteArr)
 
+if (fileSize == 0):
+	quit()
+	
 # calculate the frequency of each byte value in the file 
 freqList = [] 
 for b in range(256): 
