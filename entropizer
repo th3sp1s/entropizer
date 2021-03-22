@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while IFS= read -r -d '' -u 9
+do
+    entropcalc $REPLY >> ./entropies
+done 9< <( find . -type f -print0 )
+
+#sort ./entropies > ./entropies_sort
+#rm ./entropies
+#don't need to sort
+
+entroplot entropies
