@@ -9,7 +9,7 @@ touch high_entropy_files.tmp
 while IFS= read -r -d '' -u 9
 do
     entropcalc $REPLY >> ./entropies.tmp
-    val=$(tail -n 1 entropies)
+    val=$(tail -n 1 entropies.tmp)
     #FIND HIGH ENTROPIES
     #Piping through the basic calculator command bc returns either 1 or 0.
 	#The option -l is equivalent to --mathlib; it loads the standard math library.
