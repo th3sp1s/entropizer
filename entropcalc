@@ -14,6 +14,7 @@ f.close()
 fileSize = len(byteArr)
 
 if (fileSize == 0):
+	print 0.0
 	quit()
 	
 # calculate the frequency of each byte value in the file 
